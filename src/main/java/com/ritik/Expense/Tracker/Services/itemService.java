@@ -40,15 +40,18 @@ public class itemService {
 
     // Filter items by target date
     public List<itemUnits> filter(String targetDate) {
-        return output().stream()
-                .filter(item -> item.getItemDate().equals(targetDate))
-                .collect(Collectors.toList());
+      return  repo.findByItemDate(targetDate);
+//        return output().stream()
+//                .filter(item -> item.getItemDate().equals(targetDate))
+//                .collect(Collectors.toList());
     }
 
     // Filter items by price less than or equal to the given price
     public List<itemUnits> filterPrice(int price) {
-        return output().stream()
-                .filter(item -> item.getItemPrice() <= price)
-                .collect(Collectors.toList());
+
+        return repo.findByItemPriceLessThanEqual(price);
+//        return output().stream()
+//                .filter(item -> item.getItemPrice() <= price)
+//                .collect(Collectors.toList());
     }
 }
